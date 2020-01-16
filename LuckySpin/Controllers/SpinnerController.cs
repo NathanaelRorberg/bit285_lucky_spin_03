@@ -1,4 +1,5 @@
 ﻿using System;
+using LuckySpin.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LuckySpin.Controllers
@@ -15,13 +16,14 @@ namespace LuckySpin.Controllers
             int c = random.Next(1, 10);
 
             // Load up the ViewBag for use by the Spinner View "Index.cshtml"
-            ViewBag.ImgDisplay = (a == luck || b == luck || c == luck)?"block":"none";
-            ViewBag.A = a;
-            ViewBag.B = b;
-            ViewBag.C = c;
-            ViewBag.luck = luck;
+            Spin spin = new Spin();
+            spin.ImgDisplay = (a == luck || b == luck || c == luck)?"block":"none";
+            spin.A = a;
+            spin.B = b;
+            spin.C = c;
+            spin.luck = luck;
 
-            return View();
+            return View(spin);
         }
     }
 }
